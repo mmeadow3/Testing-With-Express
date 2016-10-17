@@ -1,7 +1,14 @@
-"use strict";
+'use strict'
 
-describe("express", () => {
-	it("should respond with Hello World", () => {
-		// res.send === "Hello World"
-	})
+const request = require('supertest');
+const app = require("../server.js")
+
+describe('express', () => {
+  it('should respond with Hello World', (done) => {
+    request(app)
+      .get('/')
+      .expect(200)
+      .expect('Hello World')
+      .end(done)
+  })
 })
